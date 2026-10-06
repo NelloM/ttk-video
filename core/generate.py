@@ -145,7 +145,7 @@ def generate_content(topic: str | None, past_titles: list[str], niche: str, fmt:
     models = [m.strip() for m in GEMINI_MODEL.split(",") if m.strip()]
     last_err = None
     for model in models:
-        for attempt in range(1, 5):
+        for attempt in range(1, 3):
             try:
                 resp = client.models.generate_content(
                     model=model,
@@ -166,7 +166,7 @@ def generate_content(topic: str | None, past_titles: list[str], niche: str, fmt:
                 if code not in RETRYABLE:
                     raise  # chiave errata, quota esaurita, ecc.: inutile riprovare
                 wait = 5 * 2 ** (attempt - 1) + random.random()
-                print(f"    {model}: errore {code}, riprovo tra {wait:.0f}s ({attempt}/4)")
+                print(f"    {model}: errore {code}, riprovo tra {wait:.0f}s ({attempt}/2)")
                 time.sleep(wait)
         else:
             print(f"    '{model}' non risponde, passo al modello successivo")
