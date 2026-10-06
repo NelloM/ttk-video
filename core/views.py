@@ -29,8 +29,8 @@ def stampa_valori(campo1, campo2):
 def index(request):
     messaggio = None
     if request.method == "POST":
-        niche = request.POST.get("campo1", "")
-        fmt = request.POST.get("campo2", "")
+        fmt = request.POST.get("campo1", "")
+        niche = request.POST.get("campo2", "")
         stampa_valori(niche, fmt)
         content = g.produce_video(niche, fmt, OUT_ROOT, None,
                                   None)
