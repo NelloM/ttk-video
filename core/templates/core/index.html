@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stampa valori</title>
+</head>
+<body>
+  <h1>Inserisci due valori</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p><input type="text" name="campo1" placeholder="Campo 1"></p>
+    <p><input type="text" name="campo2" placeholder="Campo 2"></p>
+    <button type="submit">Invia</button>
+  </form>
+  {% if messaggio %}<p><strong>{{ messaggio }}</strong></p>{% endif %}
+</body>
+</html>
