@@ -1,18 +1,102 @@
 <!DOCTYPE html>
+
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stampa valori</title>
+  <title>Video Generator</title>
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, sans-serif;
+    }
+
+    body {
+      max-width: 640px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 .3rem;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: .7rem;
+      font-size: 1rem;
+      box-sizing: border-box;
+      border-radius: 8px;
+      border: 1px solid #8886;
+    }
+
+    button {
+      margin-top: 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:disabled {
+      opacity: .5;
+      cursor: wait;
+    }
+
+    pre {
+      background: #8881;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      min-height: 5rem;
+      font-size: .85rem;
+    }
+
+    a {
+      word-break: break-all;
+    }
+  </style>
 </head>
+
 <body>
+
   <h1>Inserisci due valori</h1>
+
   <form method="post">
     {% csrf_token %}
-    <p><input type="text" name="campo1" placeholder="Campo 1"></p>
-    <p><input type="text" name="campo2" placeholder="Campo 2"></p>
+
+    <p>
+      <label for="campo1">Format:</label>
+
+      <select id="campo1" name="campo1" required>
+        <option value="" disabled selected>Seleziona un format</option>
+        <option value="curiosita">Curiosità</option>
+        <option value="storia">Storia</option>
+        <option value="miti">Miti</option>
+      </select>
+    </p>
+
+    <p>
+      <label for="campo2">Nicchia:</label>
+      <input
+        type="text"
+        id="campo2"
+        name="campo2"
+        placeholder="Inserisci la nicchia..."
+      >
+    </p>
+
     <button type="submit">Invia</button>
   </form>
-  {% if messaggio %}<p><strong>{{ messaggio }}</strong></p>{% endif %}
+
+  {% if messaggio %}
+    <p><strong>{{ messaggio }}</strong></p>
+  {% endif %}
+
 </body>
+
 </html>

@@ -1,2 +1,11 @@
 Django>=5.0,<6.0
 gunicorn>=22.0
+google-genai>=1.0.0
+edge-tts>=6.1.0
+moviepy>=2.0.0
+pillow>=10.1.0
+numpy
+requests
+python-dotenv
+fastapi
+uvicorn
