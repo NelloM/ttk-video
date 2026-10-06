@@ -160,7 +160,7 @@ def generate_content(topic: str | None, past_titles: list[str], niche: str, fmt:
             except genai_errors.APIError as e:
                 last_err = e
                 code = getattr(e, "code", None)
-                if code in (404, 429):  # modello inesistente o quota di quel modello esaurita
+                if code in (404, 429, 503):  # modello inesistente o quota di quel modello esaurita
                     print(f"    '{model}': errore {code}, provo il modello successivo")
                     break
                 if code not in RETRYABLE:
